@@ -18,26 +18,31 @@ class HomePage extends StatelessWidget {
     'SingleChildScrollView',
     'GridView',
     'CustomScrollView',
-    'ScrollController'
+    'ScrollController',
+    'ScrollNotification',
+    'WillPopScope',
+    'Dialog',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: ListView.separated(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          itemCount: _names.length,
-          itemBuilder: (_, int index) {
-            String name = _names[index];
-            return ListTile(
-              title: Text(name),
-              onTap: () {
-                routeTo(context, name);
-              },
-            );
-          },
-          separatorBuilder: (_, int index) => const Divider()),
+      body: Scrollbar(
+        child: ListView.separated(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            itemCount: _names.length,
+            itemBuilder: (_, int index) {
+              String name = _names[index];
+              return ListTile(
+                title: Text(name),
+                onTap: () {
+                  routeTo(context, name);
+                },
+              );
+            },
+            separatorBuilder: (_, int index) => const Divider()),
+      ),
     );
   }
 
@@ -45,6 +50,21 @@ class HomePage extends StatelessWidget {
     switch (name) {
       case 'GridView':
         Navigator.of(context).pushNamed('/grid');
+        break;
+      case 'CustomScrollView':
+        Navigator.of(context).pushNamed('/custom-scroll');
+        break;
+      case 'ScrollController':
+        Navigator.of(context).pushNamed('/scroll-controller');
+        break;
+      case 'ScrollNotification':
+        Navigator.of(context).pushNamed('/scroll-notification');
+        break;
+      case 'WillPopScope':
+        Navigator.of(context).pushNamed('/will-pop-scope');
+        break;
+      case 'Dialog':
+        Navigator.of(context).pushNamed('/dialog');
         break;
       default:
         break;

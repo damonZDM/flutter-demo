@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_examples/CustomScrollViewPage.dart';
 import 'package:flutter_examples/GridViewPage.dart';
 import 'package:flutter_examples/HomePage.dart';
+import 'package:flutter_examples/ScrollControllerPage.dart';
+import 'package:flutter_examples/dialogs.dart';
+import 'package:flutter_examples/scroll_notification_page.dart';
+import 'package:flutter_examples/will_pop_scope_test_route.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,9 +30,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
-      routes: <String, WidgetBuilder> {
+      routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => const HomePage(title: 'Flutter Demo Home Page'),
         '/grid': (BuildContext context) => const GridViewPage(),
+        '/custom-scroll': (BuildContext context) => const CustomScrollViewPage(),
+        '/scroll-controller': (BuildContext context) => ScrollControllerPage(),
+        '/scroll-notification': (BuildContext context) => ScrollNotificationPage(),
+        '/will-pop-scope': (BuildContext context) => WillPopScopeTestRoute(),
+        '/dialog': (_) => DialogsPage(),
       },
     );
   }
